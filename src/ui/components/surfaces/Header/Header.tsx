@@ -2,7 +2,7 @@ import React from 'react';
 import { HeaderAppBar, HeaderLogo } from './Header.style';
 import { Toolbar, Container } from '@material-ui/core';
 
-const Header: React.FC = () => {
+const Header: React.FC = () => { // Header: componente funcional, ou seja, um componente foi criado usando uma função  
     return (
         <HeaderAppBar position={'sticky'}>
             <Toolbar component={Container}>
