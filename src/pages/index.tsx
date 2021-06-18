@@ -4,8 +4,11 @@ import UserInformation from 'ui/components/data-display/UserInformation/UserInfo
 import TextFieldMask from 'ui/components/inputs/TextFieldMask/TextFieldMask';
 import { Button, Typography, Container } from '@material-ui/core';
 import { FormElementsContainer, ProfissionaisPaper, ProfissionaisContainer } from 'ui/styles/pages/index.style';
+import useIndex from 'data/hooks/pages/useIndex.page';
 
 export default function Home() {
+  const { cep, setCep, cepValido } = useIndex();
+
   return ( // O container serviu para centralizar os elementos 
     <div>
       <SafeEnvironment/>
@@ -15,7 +18,15 @@ export default function Home() {
       />
       <Container> 
         <FormElementsContainer>
-          <TextFieldMask mask={'99.999-999'} label={'Digite seu CEP'} fullWidth variant={'outlined'}/>
+          <TextFieldMask 
+            mask={'99.999-999'} 
+            label={'Digite seu CEP'} 
+            fullWidth 
+            variant={'outlined'}
+            value={cep}
+            onChange={(event) => setCep(event.target.value)}
+          />
+          {/* {cep} */}
           <Typography color={'error'}>CEP inválido</Typography>
           <Button variant={'contained'} color={'secondary'} sx={{width: '200px'}}>Buscar</Button>
         </FormElementsContainer>
